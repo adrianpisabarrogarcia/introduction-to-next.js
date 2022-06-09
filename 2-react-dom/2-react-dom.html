@@ -16,11 +16,29 @@
             return <h1>{title}</h1>
         }
 
+        function HeaderTwo (props) {
+            if (props.title) {
+                return <h1>{`I'm learning ${props.title}`}</h1>
+            }
+            
+            return <h1>I'm learning</h1>
+        }
+
+        function HeaderThree ({title}) {
+            //operador condicional ternario
+            return title ? <h1>{`I'm learning ${title}`}</h1> : <h1>I'm learning</h1>
+        }
+
+        
+
         function HomePage () {
             return (
                 <div>
                     <Header title="I ❤️ React" />
-                    <Header title="I'm 📚 React" />
+                    <HeaderTwo title="React ⚛️" />
+                    <HeaderTwo />
+                    <HeaderThree title="JS 🟡" />
+                    <HeaderThree />
                 </div>
             )            
         }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  <div id="app"></div>
+  <!-- React core library -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <!-- React-dom library -->
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <!-- Babel compiler -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+  <script type="text/jsx">
+    const app = document.getElementById('app');
+
+    function Title({content}) {
+        return <h1>{content}</h1>
+    }
+
+    function LikesButtom(){
+        const [likes, setLikes] = React.useState(0)
+
+        function handleClick(){
+            console.log(`likes: ${likes}`)
+            setLikes(likes + 1)
+        }
+
+        return <button onClick={handleClick}>Likes({likes})</button>
+    }
+
+    function List() {
+        const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+        
+        return (
+            <div>
+                <Title content="List of women programmers"/>
+                <ul>
+                    {
+                        names.map(
+                            (name) => (
+                                <li key={name}>
+                                    {name}
+                                </li>
+                            )
+                        )
+                    }
+                </ul>
+                <LikesButtom />
+            </div>
+        )
+    }
+
+    ReactDOM.render(<List />, app);
+  </script>
+    
+</body>
+</html>
